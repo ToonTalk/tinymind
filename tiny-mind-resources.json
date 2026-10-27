@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "resources": [
+    {
+      "file": "tiny-mind-starter.zip",
+      "kind": "starter",
+      "description": "Pretrained 260K model, matching tokenizer, and replay stories"
+    },
+    {
+      "file": "tiny-mind-binding-models-corrected.zip",
+      "kind": "models",
+      "description": "Recommended and maximum-learning four-character checkpoints"
+    },
+    {
+      "file": "tiny-mind-neuron-atlas.json",
+      "kind": "neuron-atlas",
+      "load": "later",
+      "group": "big",
+      "description": "stories15M neuron examples (both poles) for the Microscope's neuron card"
+    }
+  ]
+}
