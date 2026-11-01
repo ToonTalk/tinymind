@@ -17,6 +17,9 @@ Raise, watch and look inside real (very small) language models, in your browser:
 - **Hunt for a hidden fact**: find where a mind keeps something it knows, and prove it by
   switching parts of it off.
 
+Guides: [for students](https://toontalk.github.io/tinymind/students.html) and
+[for teachers](https://toontalk.github.io/tinymind/teachers.html).
+
 Everything runs on your own machine; nothing is uploaded. The models load by themselves: this
 folder holds the page (`index.html`) and the files it fetches beside it.
 
