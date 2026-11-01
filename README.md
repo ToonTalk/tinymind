@@ -19,6 +19,8 @@ Raise, watch and look inside real (very small) language models, in your browser:
 
 Guides: [for students](https://toontalk.github.io/tinymind/students.html) and
 [for teachers](https://toontalk.github.io/tinymind/teachers.html).
+How it was made: [every prompt](https://toontalk.github.io/tinymind/prompts.html) Ken typed while building it, with what
+Claude did in response.
 
 Everything runs on your own machine; nothing is uploaded. The models load by themselves: this
 folder holds the page (`index.html`) and the files it fetches beside it.
