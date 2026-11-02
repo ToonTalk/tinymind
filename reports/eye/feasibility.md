@@ -31,7 +31,7 @@ What changes for the room:
 - The held-out set is split into half A (12,000 drawings, used to find each neuron's examples) and half B (12,000, used only for scoring).
 - Quick, Draw! data: made available by Google, Inc. under the Creative Commons Attribution 4.0 International license.
 
-**Models** (tools/eye/train.py). The plan's tiny ConvNeXt-style net:
+**Models** ([tools/eye/train.py](https://github.com/ToonTalk/tinymind-source/blob/main/tools/eye/train.py)). The plan's tiny ConvNeXt-style net:
 - 2×2 patchify stem → 3 stages, each one block of [7×7 depthwise conv → LayerNorm → pointwise MLP with 4× hidden channels → residual] → average pool → LayerNorm → linear.
 - The stages see 14×14, 7×7 and 4×4 grids.
 - **Neurons** are the MLP hidden channels, read before the GELU (the summed votes, so each has a positive and a negative pole). A drawing's value for a neuron is its mean over the grid.
@@ -52,7 +52,7 @@ The two squeezes cut eye80k's last stage to 8 neurons in two ways:
 
 eye80k's most confused pairs are ambulance/police car (180 of 2,000 drawings), dragon/bird (148) and cat/dog (115). Its weakest classes are frog (64%), bird (70%) and dog (73%).
 
-**Measurement** (tools/eye/probe.py, tools/eye/label.py):
+**Measurement** ([tools/eye/probe.py](https://github.com/ToonTalk/tinymind-source/blob/main/tools/eye/probe.py), [tools/eye/label.py](https://github.com/ToonTalk/tinymind-source/blob/main/tools/eye/label.py)):
 
 1. **Examples.** For each last-stage neuron, its top-16 and bottom-16 drawings in half A.
 2. **Label.** One call per neuron shows gpt-6-luna both grids side by side. The model gets no class names in the picture, only the list of the 24 kinds in the prompt. It returns a label of at most 8 words per pole and a judgment for each: "one" main job, "two" related jobs, "mixed", or "unclear".
@@ -112,7 +112,7 @@ Both squeezes cut eye80k's last stage from 256 neurons to 8.
 | eye80k-sqmlp8 (8 MLP neurons, 64-wide bypass) | 87.0% | 13/16 = 81% | 1.9 / 2.8 / 4.1 | 3.12 |
 | eye20k / eye300k, for scale | 84.9% / 90.3% | 59% / 61% | 3.2 / 5.0 / 7.7 and 2.9 / 4.5 / 7.1 | – |
 
-How the columns are measured (tools/eye/breadth.py):
+How the columns are measured ([tools/eye/breadth.py](https://github.com/ToonTalk/tinymind-source/blob/main/tools/eye/breadth.py)):
 - **Effective classes:** e to the entropy of the class shares in a pole's top-k drawings, from half A. 1.0 means one class.
 - **Classes a neuron strongly answers to:** how many classes have a mean value more than one standard deviation above or below the neuron's overall mean. This looks at every drawing, not just the extreme tip.
 
@@ -278,7 +278,7 @@ Two more eyes, same recipe as the others: 20 epochs, batch 512, AdamW at 3e-3, l
 - **The gains are on the hardest kinds** (eye80k → eye1m): frog 64% → 76%, bird 70% → 80%, cat 79% → 85%, dragon 75% → 80%, dog 73% → 78%.
 - **The usual mix-ups barely move:** ambulance/police car, dragon/bird and cat/dog are still the top three at every size.
 
-**What a bigger eye would cost in the room.** Times are for one look, the forward pass with every stage's neurons, as the room's worker does it. They come from src/eye.js on one thread of this desktop's Xeon W-2223 under Node 24, as the median of three passes over 100 sample doodles. Float16 weights kept float32's top guess on 250 of 250 sample doodles at every size.
+**What a bigger eye would cost in the room.** Times are for one look, the forward pass with every stage's neurons, as the room's worker does it. They come from [src/eye.js](https://github.com/ToonTalk/tinymind-source/blob/main/src/eye.js) on one thread of this desktop's Xeon W-2223 under Node 24, as the median of three passes over 100 sample doodles. Float16 weights kept float32's top guess on 250 of 250 sample doodles at every size.
 
 | Eye | Float16 weights (gzipped) | One look | Card sweep over the 5,000-doodle sample (6 helpers) | Sweep table | Growth recording (19 snapshots + summaries) |
 |---|---:|---:|---:|---:|---:|
@@ -298,7 +298,7 @@ The sweep times for the bigger eyes are scaled from eye80k's measured 10 s by th
   - Leave out its growth recording (48 MB).
 - **The room's default stays eye80k.** Whether to add the button is Ken's call.
 
-The two new eyes' weights (float32, with manifests that src/eye.js reads) are in `~\tm-data\eye\export-eye1m\` and `export-eye3m\`.
+The two new eyes' weights (float32, with manifests that [src/eye.js](https://github.com/ToonTalk/tinymind-source/blob/main/src/eye.js) reads) are in `~\tm-data\eye\export-eye1m\` and `export-eye3m\`.
 
 ## What this means for the room
 

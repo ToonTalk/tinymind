@@ -1,7 +1,8 @@
 # Tiny Mind: study reports
 
 The reports behind [how Tiny Mind was made](https://claude.ai/artifact/JL5ndGx9aHZM4zvbw12yGe), written by Claude Code
-as each study finished. The pass bars were set before the results came in.
+as each study finished. The pass bars were set before the results came in. The code that ran them is in
+[the source repository](https://github.com/ToonTalk/tinymind-source).
 
 - [The kickoff](https://github.com/ToonTalk/misc/blob/main/tiny-mind-kickoff.md), from a
   [design conversation on claude.ai](https://claude.ai/share/a210aa0d-ca38-40f7-a0ff-35758d64e905) (July 5).
